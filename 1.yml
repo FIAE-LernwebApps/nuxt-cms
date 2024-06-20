@@ -1,0 +1,51 @@
+id: 1
+
+title: Einführung und erstes SQL-Statement
+
+difficulty: easy
+
+description: Mit der ersten Aufgabe lernst du dieses SQL-Tool kennen und schreibst dein erstes SQL-Statement.
+
+onCreate:
+  - CREATE TABLE Menschen (
+    id INT PRIMARY KEY,
+    name TEXT,
+    alter INT
+    );
+  # Create 35 rows
+  - INSERT INTO Menschen (id, name, alter) VALUES
+    (1, 'Max', 25),
+    (2, 'Anna', 30),
+    (3, 'Hans', 40),
+    (4, 'Lisa', 20),
+    (5, 'Peter', 35),
+    (6, 'Maria', 45),
+    (7, 'Paul', 25),
+    (8, 'Eva', 30),
+    (9, 'Karl', 40),
+    (10, 'Sara', 20),
+    (11, 'Tom', 35),
+    (12, 'Lena', 45),
+    (13, 'Fritz', 25),
+    (14, 'Lena', 30),
+    (15, 'Hanna', 40),
+    (16, 'Lukas', 20),
+    (17, 'Lara', 35),
+    (18, 'Hans', 45),
+    (19, 'Lena', 25),
+    (20, 'Hans', 30),
+    (21, 'Lisa', 40),
+    (22, 'Peter', 20),
+    (23, 'Maria', 35),
+    (24, 'Paul', 45),
+    (25, 'Eva', 25),
+    (26, 'Karl', 30),
+    (27, 'Sara', 40),
+    (28, 'Tom', 20),
+    (29, 'Lena', 35),
+    (30, 'Hanna', 45),
+    (31, 'Lukas', 25),
+    (32, 'Lara', 30),
+    (33, 'Hans', 40),
+    (34, 'Lena', 20),
+    (35, 'Hans', 35);
