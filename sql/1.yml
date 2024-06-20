@@ -8,12 +8,12 @@ description: Mit der ersten Aufgabe lernst du dieses SQL-Tool kennen und schreib
 
 onCreate:
   - CREATE TABLE Menschen (
-    id INT PRIMARY KEY,
-    name TEXT,
-    alter INT
+      id INT PRIMARY KEY,
+      name TEXT,
+      "alter" INT
     );
   # Create 35 rows
-  - INSERT INTO Menschen (id, name, alter) VALUES
+  - INSERT INTO Menschen (id, name, "alter") VALUES
     (1, 'Max', 25),
     (2, 'Anna', 30),
     (3, 'Hans', 40),
