@@ -49,3 +49,19 @@ onCreate:
     (33, 'Hans', 40),
     (34, 'Lena', 20),
     (35, 'Hans', 35);
+
+onCheck:
+  keywords:
+    - select
+    - from
+  table:
+    allRows: false
+    columns:
+      - id
+      - name
+      - alter
+    length: 35
+    rows: 
+      - id: 1
+        name: Max
+        alter: 25
