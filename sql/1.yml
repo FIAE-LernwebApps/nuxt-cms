@@ -16,50 +16,85 @@ description:
   <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname; </pre>
   Wenn du alle Spalten einer Tabelle abfragen möchtest, kannst du schreiben&colon; <br />
   <pre> select * from Tabellenname; </pre>
-  <span style="font-weight&colon; bold;">In der ersten Aufgabe sollst du alle Daten aus der Tabelle Menschen abfragen.
+  <span style="font-weight&colon; bold;">In dieser Aufgabe sollst du alle Daten aus der Tabelle Abteilung abfragen.
+
 onCreate:
-  - CREATE TABLE Menschen (
-      id INT PRIMARY KEY,
-      name TEXT,
-      "alter" INT
+  - create table Abteilung (
+      abteilungs_nr text primary key,
+      name text
     );
-  # Create 35 rows
-  - INSERT INTO Menschen (id, name, "alter") VALUES
-    (1, 'Max', 25),
-    (2, 'Anna', 30),
-    (3, 'Hans', 40),
-    (4, 'Lisa', 20),
-    (5, 'Peter', 35),
-    (6, 'Maria', 45),
-    (7, 'Paul', 25),
-    (8, 'Eva', 30),
-    (9, 'Karl', 40),
-    (10, 'Sara', 20),
-    (11, 'Tom', 35),
-    (12, 'Lena', 45),
-    (13, 'Fritz', 25),
-    (14, 'Lena', 30),
-    (15, 'Hanna', 40),
-    (16, 'Lukas', 20),
-    (17, 'Lara', 35),
-    (18, 'Hans', 45),
-    (19, 'Lena', 25),
-    (20, 'Hans', 30),
-    (21, 'Lisa', 40),
-    (22, 'Peter', 20),
-    (23, 'Maria', 35),
-    (24, 'Paul', 45),
-    (25, 'Eva', 25),
-    (26, 'Karl', 30),
-    (27, 'Sara', 40),
-    (28, 'Tom', 20),
-    (29, 'Lena', 35),
-    (30, 'Hanna', 45),
-    (31, 'Lukas', 25),
-    (32, 'Lara', 30),
-    (33, 'Hans', 40),
-    (34, 'Lena', 20),
-    (35, 'Hans', 35);
+  - create table Mitarbeiter (
+      mitarbeiter_nr int primary key not null,
+      vorname text not null,
+      nachname text not null,
+      geschlecht text not null,
+      gehalt int,
+      provfaktor int,
+      abteilungs_nr text,
+      geburtsdatum date,
+      vorgestzten_nr int,
+      foreign key (vorgestzten_nr) references Mitarbeiter(mitarbeiter_nr),
+      foreign key (abteilungs_nr) references Abteilung(abteilungs_nr)
+    );
+  - create table Projekt (
+      projekt_nr int primary key,
+      name text
+    );
+  - create table ArbeitetAn (
+      projekt_nr int,
+      mitarbeiter_nr int,
+      stunden int,
+      primary key (projekt_nr, mitarbeiter_nr),
+      foreign key (projekt_nr) references Projekt(projekt_nr),
+      foreign key (mitarbeiter_nr) references Mitarbeiter(mitarbeiter_nr)
+    );
+  - insert into Abteilung (abteilungs_nr, name) values 
+      ('G01', 'Geschäftsführung'),
+      ('M05', 'Marketing'),
+      ('V04', 'EDV'),
+      ('I01', 'F&E')
+    ;
+  - insert into Mitarbeiter (mitarbeiter_nr, vorname, nachname, geschlecht, gehalt, provfaktor, abteilungs_nr, geburtsdatum, vorgestzten_nr) values 
+      (1, 'Walter', 'Breuer', 'm', 50000, 1.9, 'G01', '1964-03-20', null),
+      (2, 'Ursula', 'Mayer', 'w', 40000, 1.2, 'M05', '1975-12-01', 1),
+      (3, 'Klaus', 'Suhr', 'm', 37500, 1.0, 'V04', '1979-07-14', 1),
+      (4, 'Heinz', 'Warner', 'm', 37500, 1.0, 'G01', '1980-06-29', 1),
+      (5, 'Anette', 'Kroll', 'w', 34000, null, 'G01', '1969-07-12', 1),
+      (6, 'Andreas', 'Walther', 'm', 34000, 1.2, 'M05', '1981-10-31', 2),
+      (7, 'Wilhelm', 'Grundner', 'm', 34500, 1.1, null, '1987-05-10', 3),
+      (11, 'Elvira', 'Ott', 'w', 25000, 1.5, 'V04', '1967-04-13', 3),
+      (14, 'Gregor', 'Wagner', 'm', 25000, 1.1, 'V04', '1981-05-11', 3),
+      (20, 'Karl', 'Petersen', 'm', 44500, 1.0, 'M05', '1962-03-05', 2),
+      (23, 'Angela', 'Gabler', 'w', 39000, 1.2, 'V04', '1959-12-06', 3),
+      (25, 'Jürgen', 'Gernsch', 'm', 34500, 1.4, 'M05', '1981-08-20', 2)
+    ;
+  - insert into Projekt (projekt_nr, name) values  
+      (1, 'Marketingprojekt'),
+      (3, 'Personalentwicklung'),
+      (12, 'IT-Infrastruktur'),
+      (14, 'Aufbau Informationscenter'),
+      (21, 'Lagerorganisation'),
+      (22, 'Umzug Standort'),
+      (28, 'Qualifzierungsoffensive')
+    ;
+  - insert into ArbeitetAn (mitarbeiter_nr, projekt_nr, stunden) values 
+      (1, 1, 10),
+      (1, 3, 5),
+      (1, 21, 8),
+      (2, 14, 7),
+      (2, 22, 4),
+      (2, 28, 20),
+      (3, 12, 18),
+      (3, 21, 18),
+      (4, 3, 42),
+      (5, 1, 60),
+      (5, 12, 16),
+      (6, 14, 17),
+      (23, 22, 9),
+      (1, 28, 42),
+      (11, 12, 14),
+      (11, 21, 20)
+    ;
 
 onCheck:
   keywords:
@@ -68,11 +103,9 @@ onCheck:
   table:
     allRows: false
     columns:
-      - id
+      - abt_nr
       - name
-      - alter
-    length: 35
+    length: 4
     rows: 
-      - id: 1
-        name: Max
-        alter: 25
+      - abt_nr: G01
+        name: Geschäftsführung
