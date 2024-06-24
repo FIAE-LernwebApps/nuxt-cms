@@ -16,7 +16,7 @@ description:
   <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname; </pre>
   Wenn du alle Spalten einer Tabelle abfragen möchtest, kannst du schreiben&colon; <br />
   <pre> select * from Tabellenname; </pre>
-  In der ersten Aufgabe sollst du alle Daten aus der Tabelle Menschen abfragen.
+  <span style="font-weight&colon; bold;">In der ersten Aufgabe sollst du alle Daten aus der Tabelle Menschen abfragen.
 onCreate:
   - CREATE TABLE Menschen (
       id INT PRIMARY KEY,
