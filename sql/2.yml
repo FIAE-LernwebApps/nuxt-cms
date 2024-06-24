@@ -91,15 +91,15 @@ onCheck:
     - from
   table:
     columns:
-      - vorname
       - nachname
+      - vorname
       - geburtsdatum
     length: 12
     rows:
-      - vorname: Walter
-        nachname: Breuer
+      - nachname: Breuer
+        vorname: Walter
         geburtsdatum: '1964-03-20'
-      - vorname: Ursula
-        nachname: Mayer
+      - nachname: Mayer
+        vorname: Ursula
         geburtsdatum: '1975-12-01'
     allRows: false
