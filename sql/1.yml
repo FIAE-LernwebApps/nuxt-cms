@@ -11,7 +11,7 @@ description:
   Unter Diagramm siehst du die aktuelle Datenbankstruktur als ER-Diagramm, d.h. hier siehst du, welche Tabellen und dazugehörigen Spalten in der Datenbank bereits existieren.
   Unter YAML siehst du die Rückgabe des SQL-Statements - genauso wie in der Tabelle - in YAML-Format (z.b. zum weiterprogrammieren).
   <br />
-  Mit einem SELECT-Statement kannst du Daten aus einer Tabelle abfragen.
+  Mit einem SELECT-Statement kannst du Daten aus einer Tabelle abfragen. <br />
   Das SELECT-Statement hat folgende Struktur&colon; <br />
   <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname; </pre>
   Wenn du alle Spalten einer Tabelle abfragen möchtest, kannst du schreiben&colon; <br />
