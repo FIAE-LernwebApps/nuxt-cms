@@ -1,0 +1,41 @@
+id: id
+
+title: title
+
+difficulty: difficulty
+
+description: description
+
+onCreate:
+  - SQL statement 1
+  - SQL statement 2
+  - ...
+
+onCheck:
+  keywords:
+    - keyword 1, which have to be in the SQL statement
+    - keyword 2, which have to be in the SQL statement
+    - ...
+  table:
+    columns:
+      - column 1, which have to be in the table
+      - column 2, which have to be in the table
+      - ...
+    length: number of rows in the result
+    rows:
+      - column 1: value 1
+        column 2: value 2
+        # ...
+      - column 1: value 1
+        column 2: value 2
+        # ...
+      - ...
+    allRows: false
+      # If true, the rows of the result must match exactly the rows in the table
+      # If false, all rows have to be in the result, but there can be more rows in the result
+    sql:
+      - SQL statement 1
+      - SQL statement 2
+      - ...
+      # To check the result, the SQL statements must return 1 or 0
+      # e.g. select exists(select * from table where column = value)

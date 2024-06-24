@@ -1,0 +1,107 @@
+id: 2
+
+title: Vertiefung "SELECT - Statement"
+
+difficulty: easy
+
+description: description
+
+onCreate:
+  - create table Abteilung (
+      abt_nr text primary key,
+      name text
+    );
+  - create table Mitarbeiter (
+      pers_nr int primary key not null,
+      vorname text not null,
+      nachname text not null,
+      geschlecht text not null,
+      gehalt int,
+      provfaktor int,
+      abt_nr text,
+      gebdat date,
+      vorg_nr int,
+      foreign key (vorg_nr) references Mitarbeiter(pers_nr),
+      foreign key (abt_nr) references Abteilung(abt_nr)
+    );
+  - create table Projekt (
+      proj_nr int primary key,
+      name text
+    );
+  - create table ArbeitetAn (
+      proj_nr int,
+      pers_nr int,
+      stunden int,
+      primary key (proj_nr, pers_nr),
+      foreign key (proj_nr) references Projekt(proj_nr),
+      foreign key (pers_nr) references Mitarbeiter(pers_nr)
+    );
+  - insert into Abteilung (abt_nr, name) values 
+      ('G01', 'Geschäftsführung'),
+      ('M05', 'Marketing'),
+      ('V04', 'EDV'),
+      ('I01', 'F&E')
+    ;
+  - insert into Mitarbeiter (pers_nr, vorname, nachname, geschlecht, gehalt, provfaktor, abt_nr, gebdat, vorg_nr) values 
+      (1, 'Walter', 'Breuer', 'm', 50000, 1.9, 'G01', '1964-03-20', null),
+      (2, 'Ursula', 'Mayer', 'w', 40000, 1.2, 'M05', '1975-12-01', 1),
+      (3, 'Klaus', 'Suhr', 'm', 37500, 1.0, 'V04', '1979-07-14', 1),
+      (4, 'Heinz', 'Warner', 'm', 37500, 1.0, 'G01', '1980-06-29', 1),
+      (5, 'Anette', 'Kroll', 'w', 34000, null, 'G01', '1969-07-12', 1),
+      (6, 'Andreas', 'Walther', 'm', 34000, 1.2, 'M05', '1981-10-31', 2),
+      (7, 'Wilhelm', 'Grundner', 'm', 34500, 1.1, null, '1987-05-10', 3),
+      (11, 'Elvira', 'Ott', 'w', 25000, 1.5, 'V04', '1967-04-13', 3),
+      (14, 'Gregor', 'Wagner', 'm', 25000, 1.1, 'V04', '1981-05-11', 3),
+      (20, 'Karl', 'Petersen', 'm', 44500, 1.0, 'M05', '1962-03-05', 2),
+      (23, 'Angela', 'Gabler', 'w', 39000, 1.2, 'V04', '1959-12-06', 3),
+      (25, 'Jürgen', 'Gernsch', 'm', 34500, 1.4, 'M05', '1981-08-20', 2)
+    ;
+  - insert into Projekt (proj_nr, name) values  
+      (1, 'Marketingprojekt'),
+      (3, 'Personalentwicklung'),
+      (12, 'IT-Infrastruktur'),
+      (14, 'Aufbau Informationscenter'),
+      (21, 'Lagerorganisation'),
+      (22, 'Umzug Standort'),
+      (28, 'Qualifzierungsoffensive')
+    ;
+  - insert into ArbeitetAn (pers_nr, proj_nr, stunden) values 
+      (1, 1, 10),
+      (1, 3, 5),
+      (1, 21, 8),
+      (2, 14, 7),
+      (2, 22, 4),
+      (2, 28, 20),
+      (3, 12, 18),
+      (3, 21, 18),
+      (4, 3, 42),
+      (5, 1, 60),
+      (5, 12, 16),
+      (6, 14, 17),
+      (23, 22, 9),
+      (1, 28, 42),
+      (11, 12, 14),
+      (11, 21, 20)
+    ;
+
+onCheck:
+  keywords:
+    - select
+    - from
+  table:
+    columns:
+      - vorname
+      - nachname
+      - gebdat
+    length: number of rows in the result
+    rows:
+      - column 1: value 1
+        column 2: value 2
+        # ...
+      - column 1: value 1
+        column 2: value 2
+        # ...
+      - ...
+    allRows: false
+      # If true, the rows of the result must match exactly the rows in the table
+      # If false, all rows have to be in the result, but there can be more rows in the result
