@@ -103,9 +103,9 @@ onCheck:
   table:
     allRows: false
     columns:
-      - abt_nr
+      - abteilungsNummer
       - name
     length: 4
     rows: 
-      - abt_nr: G01
+      - abteilungsNummer: G01
         name: Geschäftsführung
