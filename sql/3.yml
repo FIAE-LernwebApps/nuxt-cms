@@ -102,7 +102,7 @@ onCheck:
       - vorname
       - nachname
       - abteilungsNummer
-    length: 10
+    length: 12
     rows:
       - nachname: Breuer
         vorname: Walter

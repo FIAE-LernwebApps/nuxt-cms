@@ -94,7 +94,7 @@ onCheck:
       - vorname
       - nachname
       - geburtsdatum
-    length: 10
+    length: 12
     rows:
       - vorname: Walter
         nachname: Breuer
