@@ -1,11 +1,19 @@
-id: 2
+id: 3
 
-title: Vertiefung "SELECT - Statement"
+title: Sortieren
 
 difficulty: easy
 
-description: 
-  <span style="font-weight&colon; bold;">In dieser Aufgabe sollst du die Nachnamen, Vornamen und die Geburtsdaten aller Mitarbeiter abfragen.
+description:
+  Du kannst die Daten, die aus einer Tabelle, auch nach Spalten sortieren. <br />
+  Dazu schreibst erweiterst du das SELECT-Statement um die Anweisung ORDER BY.
+  Beispiel für aufsteigende Sortierung nach einer Spalte&colon; <br />
+  <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname order by Spaltenname1 asc; </pre>
+  Beispiel für absteigende Sortierung nach einer Spalte&colon; <br />
+  <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname order by Spaltenname1 desc; </pre>
+  Außerdem kannst du auch nach mehreren Spalten sortieren (zuerst nach der ersten Spalte, dann nach der zweiten Spalte, ...)&colon; <br />
+  <pre> select Spaltenname1, Spaltenname2, ... from Tabellenname order by Spaltenname1 asc, Spaltenname2 desc; </pre>
+  <span style="font-weight&colon; bold;">In dieser Aufgabe sollst du die Nachnamen, Vornamen und Abteilungsnummer aller Mitarbeiter sortiert nach Nachname und Vorname ausgeben.
 
 onCreate:
   - create table Abteilung (
@@ -93,13 +101,43 @@ onCheck:
     columns:
       - vorname
       - nachname
-      - geburtsdatum
+      - abteilungsNummer
     length: 10
     rows:
-      - vorname: Walter
-        nachname: Breuer
-        geburtsdatum: '1964-03-20'
-      - vorname: Ursula
-        nachname: Mayer
-        geburtsdatum: '1975-12-01'
-    allRows: false
+      - nachname: Breuer
+        vorname: Walter
+        abteilungsNummer: G01
+      - nachname: Gabler
+        vorname: Angela
+        abteilungsNummer: V04
+      - nachname: Gernsch
+        vorname: Jürgen
+        abteilungsNummer: M05
+      - nachname: Grundner
+        vorname: Wilhelm
+        abteilungsNummer: null
+      - nachname: Kroll
+        vorname: Anette
+        abteilungsNummer: G01
+      - nachname: Mayer
+        vorname: Ursula
+        abteilungsNummer: M05
+      - nachname: Ott
+        vorname: Elvira
+        abteilungsNummer: V04
+      - nachname: Petersen
+        vorname: Karl
+        abteilungsNummer: M05
+      - nachname: Suhr
+        vorname: Klaus
+        abteilungsNummer: V04
+      - nachname: Wagner
+        vorname: Gregor
+        abteilungsNummer: V04
+      - nachname: Walther
+        vorname: Andreas
+        abteilungsNummer: M05
+      - nachname: Warner
+        vorname: Heinz
+        abteilungsNummer: G01
+    allRows: true
