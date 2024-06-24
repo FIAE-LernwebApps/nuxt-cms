@@ -4,7 +4,7 @@ title: Einführung und erstes SQL-Statement
 
 difficulty: easy
 
-description: \
+description:
   Mit der ersten Aufgabe lernst du dieses SQL-Tool kennen und schreibst dein erstes SQL-Statement.
   Im oberen Bereich findest du den Editor in dem du das SQL-Statement für die Aufgabe schreiben kannst.
   Darunter findest du das Ergebnis des SQL-Statements. Unter Tabelle siehst du die Rückgabe des SQL-Statements in Tabellenform.
